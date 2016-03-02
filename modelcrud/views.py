@@ -29,7 +29,7 @@ def create_view(request, modelclass=None, template='modelcrud/create.html', extr
         form = formclass(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(obj.viewinfo().get_list_url())
+            return HttpResponseRedirect(obj.crudconf.get_list_url())
     else:
         form = formclass()
 
@@ -65,7 +65,7 @@ def change_view(request, id, modelclass=None, template='modelcrud/change.html', 
         form = formclass(request.POST, instance=obj)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(obj.viewinfo().get_list_url())
+            return HttpResponseRedirect(obj.crudconf.get_list_url())
     else:
         form = formclass(instance=obj)
 
@@ -86,7 +86,7 @@ def delete_view(request, id, modelclass=None, template='modelcrud/delete.html', 
 
     if request.method == 'POST':
         obj.delete()
-        return HttpResponseRedirect(obj.viewinfo().get_list_url())
+        return HttpResponseRedirect(obj.crudconf.get_list_url())
 
     context = dict(
         obj=obj,
