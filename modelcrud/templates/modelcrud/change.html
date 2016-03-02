@@ -1,0 +1,30 @@
+{% extends "modelcrud/detail_frame.html" %}
+{% load crispy_forms_tags %}
+{% block change_tab_class %}active{% endblock %}
+
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ obj.crudconf.get_origin_url }}">Dashboard</a>
+    </li>
+    <li>
+        <a href="{{obj.crudconf.get_list_url }}">{{ obj.crudconf.get_model_verbose_name_plural }}</a>
+    </li>
+    <li>
+        <a href="{{obj.crudconf.get_detail_url }}">{{ obj.crudconf.get_display_name }}</a>
+    </li>
+    <li>
+        <span> bearbeiten</span>
+    </li>
+{% endblock %}
+
+
+{% block tab_content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="btn-group">
+
+            <button type="submit" class="btn btn-success"><i class="fa fa-angle-right"></i> Speichern</button>
+        </div>
+    </form>
+{% endblock %}

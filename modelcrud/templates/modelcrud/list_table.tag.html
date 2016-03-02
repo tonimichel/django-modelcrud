@@ -1,0 +1,28 @@
+
+<table class="table table-striped">
+        <tr>
+            {% for label in head %}
+                <th>{{ label }}</th>
+            {% endfor %}
+        </tr>
+
+    <tbody>
+
+        {% for row in rows %}
+            <tr>
+                {% for col_label in row.values %}
+                    {% if forloop.first %}
+                        <td>
+                            <a href="{{ row.obj.crudconf.get_detail_url }}">
+                                {{ col_label }}
+                            </a>
+                        </td>
+                    {% else %}
+                        <td>{{ col_label }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </thead>
+</table>

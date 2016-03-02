@@ -1,0 +1,17 @@
+{% extends "modelcrud/non_detail_frame.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block create_tab_class %}active{% endblock %}
+
+
+{% block tab_content %}
+    <form action="" method="post" class="width-sm">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="btn-group">
+
+            <button type="submit" class="btn btn-success"><i class="fa fa-angle-right"></i> Erstellen</button>
+        </div>
+    </form>
+{% endblock %}

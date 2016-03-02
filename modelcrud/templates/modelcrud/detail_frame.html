@@ -1,0 +1,33 @@
+{% extends "modelcrud/base.html" %}
+
+
+{% block tabs_left %}
+    {{ block.super }}
+{% endblock %}
+
+{% block tabs_right %}
+    <ul class="nav navbar-nav">
+        <li class="{% block detail_tab_class %}{% endblock %}">
+            <a href="{{ obj.crudconf.get_detail_url }}">
+                <i class="fa fa-eye"></i>
+                Detailansicht
+            </a>
+        </li>
+        <li class="{% block change_tab_class %}{% endblock %}">
+            <a href="{{ obj.crudconf.get_change_url }}">
+                <i class="fa fa-wrench"></i>
+                Bearbeiten
+            </a>
+        </li>
+        <li class="{% block delete_tab_class %}{% endblock %}">
+            <a href="{{ obj.crudconf.get_delete_url }}">
+                <i class="fa fa-trash"></i>
+                Löschen
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block tab_content_title %}
+    <h2>{{ obj.crudconf.get_display_name }}</h2>
+{% endblock %}

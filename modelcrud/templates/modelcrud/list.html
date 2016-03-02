@@ -1,0 +1,13 @@
+{% extends "modelcrud/non_detail_frame.html" %}
+{% load modelcrud_tags %}
+{% block list_tab_class %}active{% endblock %}
+
+
+{% block tab_content %}
+
+
+    {% render_list obj object_list %}
+
+
+
+{% endblock %}

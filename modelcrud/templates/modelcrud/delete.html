@@ -1,0 +1,28 @@
+{% extends "modelcrud/detail_frame.html" %}
+
+{% block delete_tab_class %}active{% endblock %}
+
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ obj.crudconf.get_origin_url }}">Dashboard</a>
+    </li>
+    <li>
+        <a href="{{obj.crudconf.get_list_url }}">{{ obj.crudconf.get_model_verbose_name_plural }}</a>
+    </li>
+    <li>
+        <a href="{{obj.crudconf.get_detail_url }}">{{ obj.crudconf.get_display_name }}</a>
+    </li>
+    <li>
+        <span> löschen</span>
+    </li>
+{% endblock %}
+
+{% block tab_content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="btn-group">
+            <a href="{{ obj.get_detail_url }}" class="btn btn-default">Abbrechen</a>
+            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Löschen</button>
+        </div>
+    </form>
+{% endblock %}
