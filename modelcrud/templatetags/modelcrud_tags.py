@@ -1,4 +1,5 @@
 from django import template
+import types
 
 register = template.Library()
 
@@ -17,7 +18,8 @@ def render_list(obj, object_list):
         rows.append(
             dict(
                 obj=entry,
-                values=[getattr(entry, fname) for fname in obj.crudconf.get_list_display()]
+                values=[getattr(entry, fname)() if isinstance(getattr(entry, fname), types.MethodType) \
+                    else getattr(entry, fname) for fname in obj.crudconf.get_list_display()]
             )
         )
     return dict(
