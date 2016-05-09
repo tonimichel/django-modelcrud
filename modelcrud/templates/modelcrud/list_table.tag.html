@@ -1,5 +1,5 @@
 
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
         <tr>
             {% for label in head %}
                 <th>{{ label }}</th>
@@ -18,7 +18,7 @@
                             </a>
                         </td>
                     {% else %}
-                        <td>{{ col_label }}</td>
+                        <td>{{ col_label|default_if_none:"" }}</td>
                     {% endif %}
                 {% endfor %}
             </tr>
