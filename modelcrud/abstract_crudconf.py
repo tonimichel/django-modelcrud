@@ -36,6 +36,12 @@ class AbstractCrudConf(object):
         """
         return
 
+    def get_origin_title(self):
+        """
+        Return the Title of the page.
+        """
+        return 'Dashboard'
+
     def get_display_name(self):
         """
         Returns the string representation of the object bount to this

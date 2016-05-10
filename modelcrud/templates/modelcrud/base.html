@@ -3,7 +3,7 @@
 
 {% block breadcrumbs %}
     <li>
-        <a href="{{ obj.crudconf.get_origin_url }}">Dashboard</a>
+        <a href="{{ obj.crudconf.get_origin_url }}">{{ obj.crudconf.get_origin_title }}</a>
     </li>
     <li>
         <span>{{ obj.crudconf.get_model_verbose_name_plural }}</span>
