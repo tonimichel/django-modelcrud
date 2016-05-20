@@ -12,15 +12,25 @@ def render_list(obj, object_list):
     head = []
     for fname in obj.crudconf.get_list_display():
         if fname in [f.name for f in type(obj)._meta.get_fields()]:
-            head.append(type(obj)._meta.get_field(fname).verbose_name)
+            head.append(dict(
+                name=fname,
+                label=type(obj)._meta.get_field(fname).verbose_name
+            ))
         else:
             try:
                 """
                 try the fieldname foo from getter method get_foo_display()
                 """
-                head.append(type(obj)._meta.get_field(fname.replace('get_','').replace('_display','')).verbose_name)
+                head.append(dict(
+                    name=fname,
+                    label=type(obj)._meta.get_field(fname.replace('get_','').replace('_display','')).verbose_name
+                ))
             except:
-                head.append('unknown')
+                head.append(dict(
+                    name=fname,
+                    label='unkown'
+                ))
+
 
     rows = []
     for entry in object_list:
