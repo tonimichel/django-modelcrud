@@ -10,6 +10,7 @@ class AbstractCrudConf(object):
     model = None
     list_display = []
     detail_properties = []
+    list_display_detail_link_index = 0
 
     def __init__(self, instance):
         self.instance = instance

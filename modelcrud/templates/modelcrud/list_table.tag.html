@@ -19,7 +19,7 @@
         {% for row in rows %}
             <tr>
                 {% for col_label in row.values %}
-                    {% if forloop.first %}
+                    {% if forloop.counter0 == row.obj.crudconf.list_display_detail_link_index %}
                         <td>
                             <a href="{{ row.obj.crudconf.get_detail_url }}">
                                 {{ col_label }}
