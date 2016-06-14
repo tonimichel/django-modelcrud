@@ -1,6 +1,7 @@
 from django import template
 import types
 from django.core.exceptions import FieldDoesNotExist
+import datetime
 
 register = template.Library()
 
@@ -83,3 +84,8 @@ def render_details(obj):
     return dict(
         properties=props
     )
+
+
+@register.filter
+def isinstance_datetime(value):
+    return isinstance(value, datetime.date)

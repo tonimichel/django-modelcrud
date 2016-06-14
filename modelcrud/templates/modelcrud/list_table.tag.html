@@ -1,4 +1,4 @@
-
+{% load modelcrud_tags %}
 <table class="table table-striped"
        data-toggle="table"
        data-search="true"
@@ -26,7 +26,11 @@
                             </a>
                         </td>
                     {% else %}
-                        <td>{{ col_label|default_if_none:"" }}</td>
+                        {% if col_label|isinstance_datetime %}
+                            <td><span class="hidden">{{ col_label|date:"c" }}</span>{{ col_label|default_if_none:"" }}</td>
+                        {% else %}
+                            <td>{{ col_label|default_if_none:"" }}</td>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             </tr>
