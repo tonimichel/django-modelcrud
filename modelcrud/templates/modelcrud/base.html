@@ -19,29 +19,35 @@
         {% endblock %}
     </h2>
 
-    <div class="tab-bar">
-        <div class="pull-left">
-            {% block tabs_left %}
-            <ul class="nav navbar-nav">
-                <li class="{% block list_tab_class %}{% endblock %}">
-                    <a href="{{ obj.crudconf.get_list_url }}">
-                        <i class="fa fa-list"></i>
-                        Listenansicht
-                    </a>
-                </li>
-                <li class="{% block create_tab_class %}{% endblock %}">
-                    <a href="{{ obj.crudconf.get_create_url }}">
-                        <i class="fa fa-plus"></i>
-                        Hinzufügen
-                    </a>
-                </li>
-            </ul>
+    <div>
+        <div class="tab-bar">
+            <div class="pull-left">
+                {% block tabs_left %}
+                <ul class="nav navbar-nav">
+                    <li class="{% block list_tab_class %}{% endblock %}">
+                        <a href="{{ obj.crudconf.get_list_url }}">
+                            <i class="fa fa-list"></i>
+                            Listenansicht
+                        </a>
+                    </li>
+                    <li class="{% block create_tab_class %}{% endblock %}">
+                        <a href="{{ obj.crudconf.get_create_url }}">
+                            <i class="fa fa-plus"></i>
+                            Hinzufügen
+                        </a>
+                    </li>
+                </ul>
+                {% endblock %}
+            </div>
+            <div class="pull-right">
+                {% block tabs_right %}{% endblock %}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            {% block status_info %}
             {% endblock %}
         </div>
-        <div class="pull-right">
-            {% block tabs_right %}{% endblock %}
-        </div>
-        <div class="clearfix"></div>
     </div>
 
     <div class="tab-content">
