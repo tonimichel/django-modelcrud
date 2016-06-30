@@ -12,6 +12,11 @@ class AbstractCrudConf(object):
     detail_properties = []
     list_display_detail_link_index = 0
 
+    # Default column-name for table-sort. To be overwritten in subclass
+    data_sort_name = ''
+    # Default sort-ordering
+    data_sort_order = 'asc'
+
     def __init__(self, instance):
         self.instance = instance
 

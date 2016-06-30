@@ -13,8 +13,16 @@ def render_list(obj, object_list):
     """
     head = []
     list_display = obj.crudconf.get_list_display()
+
+    data_sort_name = obj.crudconf.data_sort_name
+    data_sort_order = obj.crudconf.data_sort_order
+
+    i = 0
     for fname in list_display:
 
+        if i == 0 and not data_sort_name:
+            data_sort_name = fname
+        i +=1
 
         if '__' in fname:
             rel_attr = fname.split('__')[1]
@@ -64,7 +72,10 @@ def render_list(obj, object_list):
 
     return dict(
         head=head,
-        rows=rows
+        rows=rows,
+        data_sort_name = data_sort_name,
+        data_sort_order = data_sort_order,
+
     )
 
 

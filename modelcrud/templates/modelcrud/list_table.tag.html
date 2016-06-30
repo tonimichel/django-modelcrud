@@ -1,16 +1,19 @@
 {% load modelcrud_tags %}
+
+
+
 <table class="table table-striped"
        data-toggle="table"
        data-search="true"
-       data-sort-name="{{ head.0.name }}"
-       data-sort-order="asc"
+       data-sort-name="{{ data_sort_name }}"
+       data-sort-order="{{data_sort_order }}"
        data-pagination="true"
        data-page-size="25">
 
     <thead>
         <tr>
             {% for field in head %}
-                <th data-field="{{field.name}}" data-sortable="true">{{ field.label }}</th>
+                <th data-field="{{field.name}}" data-sortable="true">{{ field.label }} </th>
             {% endfor %}
         </tr>
     </thead>
@@ -23,6 +26,7 @@
                         <td>
                             <a id="{{ col_label }}" href="{{ row.obj.crudconf.get_detail_url }}">
                                 {{ col_label }}
+
                             </a>
                         </td>
                     {% else %}
